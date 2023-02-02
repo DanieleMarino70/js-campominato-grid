@@ -24,9 +24,10 @@ buttonEl.addEventListener("click", function(){
     containerEl.style.display = "block";
     //CREO UN ELEMENTO DALL'ID ROW
     const selectDifficultyEl = document.getElementById("game-difficulty");
-    const gridEl = document.getElementById("grid"); 
+    const gridEl = document.getElementById("grid");
+    const difficultyValue = parseInt(selectDifficultyEl.value);
     //RICHIAMO LA FUNZIONE GRIGLIA
-    generateGrid(gridEl, selectDifficultyEl);
+    generateGrid(gridEl, difficultyValue);
 });
 
 
@@ -37,32 +38,24 @@ buttonEl.addEventListener("click", function(){
 
 function generateGrid(grid, difficulty){
     grid.innerHTML= "";
-    const whitelist = [];
 
-    
-    if (difficulty.value == "hard") {
-        for (let i = 0; i < 100; i++) {
-          whitelist.push(i + 1);
-        }
-
+    if (difficulty == 1) {
       for (let i = 0; i < 100; i++) {
+        const text = i + 1;
         const squareEl = document.createElement("div");
         squareEl.classList.add("square");
-        squareEl.classList.add("hard");
+        squareEl.classList.add("easy");
 
-        squareEl.addEventListener("click", function(){
-            console.log("Hai selezionato la casella:", this);
-            this.classList.toggle("active");
-        })
+        squareEl.addEventListener("click", function () {
+          console.log("Hai selezionato la casella:", this);
+          this.classList.toggle("active");
+        });
         grid.append(squareEl);
-        squareEl.append(whitelist[i]);
+        squareEl.append(text);
       }
-    } else if (difficulty.value == "medium") {
-        for (let i = 0; i < 81; i++) {
-          whitelist.push(i + 1);
-        }
-
+    } else if (difficulty == 2) {
       for (let i = 0; i < 81; i++) {
+        const text = i + 1;
         const squareEl = document.createElement("div");
         squareEl.classList.add("square");
         squareEl.classList.add("medium");
@@ -72,24 +65,21 @@ function generateGrid(grid, difficulty){
         });
 
         grid.append(squareEl);
-        squareEl.append(whitelist[i]);
+        squareEl.append(text);
       }
-    } else if (difficulty.value == "easy") {
-        for (let i = 0; i < 49; i++) {
-          whitelist.push(i + 1);
-        }
-
+    } else if (difficulty == 3) {
       for (let i = 0; i < 49; i++) {
+        const text = i + 1;
         const squareEl = document.createElement("div");
         squareEl.classList.add("square");
-        squareEl.classList.add("easy");
+        squareEl.classList.add("hard");
         squareEl.addEventListener("click", function () {
           console.log("Hai selezionato la casella:", this);
           this.classList.toggle("active");
         });
 
         grid.append(squareEl);
-        squareEl.append(whitelist[i]);
+        squareEl.append(text);
       }
     }
 }

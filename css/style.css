@@ -29,7 +29,7 @@ header{
 .container{
     max-width: 1200px;
     margin: 30px auto;
-    border: 2px solid white;
+    border: 5px solid white;
 }
 
 
@@ -37,13 +37,14 @@ header{
 .row{
     display: flex;
     flex-wrap: wrap;
+    height: 700px;
 }
 
 .square{
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 6rem;
+
     border: 2px solid white;
     color: white;
     cursor: crosshair   ;
@@ -54,14 +55,17 @@ header{
     color: black;
 }
 
-.square.hard{
+.square.easy{
     width: calc(100% / 10);
+    height: calc(100% / 10);
 }
 
 .square.medium{
     width: calc(100% / 9);
+    height: calc(100% / 9);
 }
 
-.square.easy{
+.square.hard{
     width: calc(100% / 7);
+    height: calc(100% / 7);
 }
